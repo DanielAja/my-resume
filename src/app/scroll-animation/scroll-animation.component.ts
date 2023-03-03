@@ -12,7 +12,7 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 
     <section>
       <h1
-      class="hidden"
+      class="hidden left"
       [ngClass]="classArr[0]"
       ><u>Experience</u></h1>
 
@@ -21,7 +21,7 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
         *ngFor="let element of data; let i = index"
           [data]="this.data[i]"
           style="transition-delay: {{i*200}}ms;"
-          class="hidden card"
+          class="hidden left card"
           [ngClass]="{'flipable': i === 3}">
         </app-card>
       </div>
@@ -29,7 +29,7 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
     </section>
     <section>
       <h1
-      class="hidden"
+      class="hidden right"
       [ngClass]="classArr[0]"
       ><u>About Me</u></h1>
 
@@ -41,13 +41,12 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
         *ngFor="let element of dataAboutMe; let i = index"
           [data]="this.dataAboutMe[i]"
           style="transition-delay: {{i*200}}ms;"
-          class="hidden card"
+          class="hidden right card"
           [ngClass]="{'flipable': i === 3}">
         </app-card>
       </div>
-      
+      <app-action-button class="hidden bottom"></app-action-button>
     </section>
-      <app-action-button></app-action-button>
   </div>`,
   styleUrls: ['./scroll-animation.component.css'],
 })
@@ -62,7 +61,6 @@ export class ScrollAnimationComponent {
   ngOnInit(): void {
     this.desktop = (window.innerWidth > 1150)? true: false;
     window.addEventListener('resize', () => {
-      console.log(window.innerWidth);
       this.desktop = (window.innerWidth > 1150)? true: false;});
   }
   observer = new IntersectionObserver(
@@ -148,7 +146,7 @@ export class ScrollAnimationComponent {
       'emoji': '️👀',
       'title': 'Interests',
       'subtitle':
-        `"most of my interests are in the intersection of technology and humanity. I'm interested in Emerging technologies, Specifically, technology is way there full potential that has yet to be realized."`,
+        `"Most of my interests are in the intersection of technology and humanity."`,
       'tags': ['⚛️ Quantum Computing', '👾 Crypto/Web3', '🧠 AI',]
     },
   ];

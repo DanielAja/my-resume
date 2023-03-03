@@ -22,7 +22,7 @@ export class BackgroundGridComponent {
   constructor( private cdref: ChangeDetectorRef ) {} 
   createGrid = () => {
     this.col = Math.floor(document.body.clientWidth / 50);
-    this.row = Math.floor(document.body.clientHeight / 50);
+    this.row = Math.floor(document.body.clientHeight / 50)+1;
     this.tiles.nativeElement.style.setProperty('--col', this.col);
     this.tiles.nativeElement.style.setProperty('--row', this.row);
     this.createSquares(this.col * this.row);
@@ -35,40 +35,40 @@ export class BackgroundGridComponent {
   isActive = false;
   start = false;
   onClick(index: number, setValue = true, userClick = false) {
-    if (this.tiles.nativeElement.children[index].classList.contains('active') === setValue || this.start === false){
+    const tile = this.tiles.nativeElement.querySelector(`div:nth-child(${index + 1})`);
+    if (tile.classList.contains('active') === setValue || this.start === false){
       return;
     }
-    if (userClick) {
-      setTimeout(() => {this.isActive = !this.isActive;
-        this.messageEvent.emit("Hola Mundo!");
-      }, 500);
-    }
-    const delay = 50;
-
+  
     if (setValue) {
-    this.tiles.nativeElement.children[index].classList.add('active');
+      tile.classList.toggle('active', true);
     } else {
-      this.tiles.nativeElement.children[index].classList.remove('active');
+      if (!tile.classList.contains('active')) {
+        return;
+      }
+      tile.classList.toggle('active', false);
     }
-
-    const indexDown = index + this.col;
-    const indexUp = index - this.col;
-    const indexLeft = index -1;
-    const indexRight = index +1;
-    const count=this.col * this.row
-    if (indexDown < count) {
-      setTimeout(() => {this.onClick(indexDown, setValue);}, delay); 
+  
+    if (userClick) {
+      this.isActive = !this.isActive;
+      this.messageEvent.emit("Hola Mundo!");
     }
-    if (indexUp < count && indexUp >= 0) {
-      setTimeout(() => {this.onClick(indexUp, setValue);}, delay); 
+  
+    const indices = [
+      index + this.col,
+      index - this.col,
+      index - 1,
+      index + 1
+    ];
+  
+    for (const i of indices) {
+      const count = this.col * this.row;
+      if (i >= 0 && i < count && (i % this.col !== 0 || index % this.col !== this.col - 1)) {
+        setTimeout(() => this.onClick(i, setValue), 50);
+      }
     }
-    if (indexLeft % this.col < this.col - 1 && indexLeft < count && indexLeft >= 0) {
-      setTimeout(() => {this.onClick(indexLeft, setValue);}, delay); 
-    }
-    if (indexRight % this.col > 0 && indexRight < count) {
-      setTimeout(() => {this.onClick(indexRight, setValue);}, delay); 
-    } 
   }
+  
   @Input() message!: string;
   ngOnChanges() {
     if (this.message === undefined) {
