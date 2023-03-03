@@ -16,9 +16,10 @@ import { Component, Input } from '@angular/core';
         </div>
       </div>
     </div>
-    <div class="card-back center">
-    <div class="emoji center">{{ back }}</div>
-    </div>
+    <div class="emoji">{{ back }}
+    <div class="card-back center">  </div>
+   
+   
   </div>
 </div>`,
   styleUrls: ['./card.component.css'],

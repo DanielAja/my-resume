@@ -5,11 +5,12 @@ h1 {
 .title {
   font-size: 3rem;
   font-weight: bolder;
-  font-family: 'IBM Plex Sans';
+  font-family: 'IBM Plex Sans', sans-serif;
   margin: 0;
 }
 .ibm-font {
-  font-family: 'IBM Plex Sans';
+  /* font-family: 'IBM Plex Sans'; */
+  font-family: Arial, sans-serif;
 }
 
 .white {

@@ -12,8 +12,8 @@ import { Component, ElementRef, ViewChild, ChangeDetectorRef, Input, Output, Eve
 export class BackgroundGridComponent {
   @ViewChild('tiles', { read: ElementRef }) tiles!: ElementRef;
 
-  col = Math.floor(document.body.clientWidth / 50);
-  row = Math.floor(document.body.clientHeight / 50);
+  col = Math.floor(document.body.clientWidth / 100);
+  row = Math.floor(document.body.clientHeight / 100);
   items: number[] | undefined;
 
   createSquares = (qua: any) => {
@@ -21,8 +21,8 @@ export class BackgroundGridComponent {
   };
   constructor( private cdref: ChangeDetectorRef ) {} 
   createGrid = () => {
-    this.col = Math.floor(document.body.clientWidth / 50);
-    this.row = Math.floor(document.body.clientHeight / 50)+1;
+    this.col = Math.floor(document.body.clientWidth / 100);
+    this.row = Math.floor(document.body.clientHeight / 100)+1;
     this.tiles.nativeElement.style.setProperty('--col', this.col);
     this.tiles.nativeElement.style.setProperty('--row', this.row);
     this.createSquares(this.col * this.row);

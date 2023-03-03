@@ -54,8 +54,8 @@ export class TypingAnimationComponent {
           this.mainDivClass += 'ibm-font';
           this.classArr[num] = 'title';
           //this.messageEvent.emit("1");
-          let col = Math.floor(document.body.clientWidth / 50);
-          let row = Math.floor(document.body.clientHeight / 50);
+          let col = Math.floor(document.body.clientWidth / 100);
+          let row = Math.floor(document.body.clientHeight / 100);
           this.messageEvent.emit(Math.floor(col*row*.192).toString());
           
         }, 1000);
