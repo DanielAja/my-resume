@@ -1,0 +1,132 @@
+/* Set up some basic styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style the container */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    perspective: 500px;
+
+  }
+  
+  /* Style the card */
+  .card {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 275px;
+    text-align: center;
+    overflow: wrap;
+    height: 500px;
+    width: 275px;
+    position: relative;
+    transform:all .75s;
+    transform-style: preserve-3d;
+  }
+  
+  
+  .card h1 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    width: auto;
+  }
+  
+  /* Style the emoji */
+  .emoji {
+    font-size: 4rem;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  background-color: #ababab50;
+  border-radius: 17px;
+  height: 7rem;
+  width: 7rem;
+  margin: auto;
+  }
+  
+  /* Style the tags */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .tag {
+  display: inline-block;
+  border-radius: 3rem;
+  background-color: #9a9595c4;
+  padding: 5px 15px;
+  margin: 3px;
+  color: white;
+  box-sizing: border-box;
+  font-size: .75rem;
+  transition: all .2s ease-in-out;
+}
+
+  .tag:hover {
+    background-color: #e8db21;
+  }
+
+  .container:hover > .flipable {
+    transform: rotateY(0);
+  }
+  .flipable {
+    transform: rotateY(180deg);
+  }
+  
+  .container > .card {
+    transition: all 1s;
+  }
+  
+  
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    max-width: 235px;
+    max-height: 460px;
+  }
+  
+  .card-front {
+    z-index: 2;
+    
+    margin: 0;
+  }
+  
+  .card-back {
+    z-index: 1;
+    transform: rotateY(180deg);
+    background-color: #fff;
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+  }
+
+
+  

@@ -1,0 +1,62 @@
+section {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 100vh;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transition: all 1s;
+  transform: translateX(0);
+}
+
+#intro{
+  pointer-events:none;
+}
+
+@media (perfer-reduced-motion: reduce) {
+  .hidden {
+    transition: none;
+  }
+}
+
+h1{
+  font-size: 3rem;
+  font-weight: bolder;
+  font-family: 'IBM Plex Sans';
+  margin: 0;
+  transform:all .75s ease;
+  margin-bottom: 30px;
+}
+.white {
+  color: white;
+  
+}
+.container{
+  overflow: auto;
+  width: 100%;
+  height: 650px;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  
+}
+.container::-webkit-scrollbar {
+  display: none;
+}
+.card{
+  margin-left:10px;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
