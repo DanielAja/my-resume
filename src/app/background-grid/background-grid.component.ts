@@ -35,38 +35,39 @@ export class BackgroundGridComponent {
   isActive = false;
   start = false;
   onClick(index: number, setValue = true, userClick = false) {
-    const tile = this.tiles.nativeElement.querySelector(`div:nth-child(${index + 1})`);
-    if (tile.classList.contains('active') === setValue || this.start === false){
+    if (this.tiles.nativeElement.children[index].classList.contains('active') === setValue || this.start === false){
       return;
     }
-  
-    if (setValue) {
-      tile.classList.toggle('active', true);
-    } else {
-      if (!tile.classList.contains('active')) {
-        return;
-      }
-      tile.classList.toggle('active', false);
-    }
-  
     if (userClick) {
-      this.isActive = !this.isActive;
-      this.messageEvent.emit("Hola Mundo!");
+      setTimeout(() => {this.isActive = !this.isActive;
+        this.messageEvent.emit("Hola Mundo!");
+      }, 500);
     }
-  
-    const indices = [
-      index + this.col,
-      index - this.col,
-      index - 1,
-      index + 1
-    ];
-  
-    for (const i of indices) {
-      const count = this.col * this.row;
-      if (i >= 0 && i < count && (i % this.col !== 0 || index % this.col !== this.col - 1)) {
-        setTimeout(() => this.onClick(i, setValue), 50);
-      }
+    const delay = 50;
+
+    if (setValue) {
+    this.tiles.nativeElement.children[index].classList.add('active');
+    } else {
+      this.tiles.nativeElement.children[index].classList.remove('active');
     }
+
+    const indexDown = index + this.col;
+    const indexUp = index - this.col;
+    const indexLeft = index -1;
+    const indexRight = index +1;
+    const count=this.col * this.row
+    if (indexDown < count) {
+      setTimeout(() => {this.onClick(indexDown, setValue);}, delay); 
+    }
+    if (indexUp < count && indexUp >= 0) {
+      setTimeout(() => {this.onClick(indexUp, setValue);}, delay); 
+    }
+    if (indexLeft % this.col < this.col - 1 && indexLeft < count && indexLeft >= 0) {
+      setTimeout(() => {this.onClick(indexLeft, setValue);}, delay); 
+    }
+    if (indexRight % this.col > 0 && indexRight < count) {
+      setTimeout(() => {this.onClick(indexRight, setValue);}, delay); 
+    } 
   }
   
   @Input() message!: string;
