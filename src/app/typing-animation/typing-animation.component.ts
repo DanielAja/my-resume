@@ -21,6 +21,7 @@ export class TypingAnimationComponent {
     "I'm a software developer @",
     'IBM',
     'Based in Austin, TX.',
+    'Click Anywhere...',
   ];
   typingTextArr = Array(this.textToTypeArr.length).fill('');
   classArr = Array(this.textToTypeArr.length).fill('');
