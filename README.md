@@ -1,5 +1,9 @@
 # MyResume
 
+MyResume, Made with angular.js: _https://danielaja.github.io/my-resume/_ 
+
+👉 [Click Here](https://danielaja.github.io/my-resume/) to view.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 
 ## Development server
